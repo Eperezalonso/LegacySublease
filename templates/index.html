@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ apartment.title }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav li {
+            margin: 0;
+        }
+
+        .nav a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav a:hover {
+            background-color: #f8f9fa;
+            border-bottom-color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .hero-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .price-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .key-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .detail-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .detail-item i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Amenities */
+        .amenities-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+
+        .amenity-item i {
+            color: #28a745;
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        /* Flash Messages */
+        .flash-messages {
+            margin-bottom: 2rem;
+        }
+
+        .flash {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .flash.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+            }
+            
+            .key-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages container">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>{{ apartment.title }}</h1>
+            <p>{{ apartment.address }}, {{ apartment.city }}</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section" id="details">
+                <div class="price-badge">${{ apartment.price }}/month</div>
+                <h2>Available for Sublease</h2>
+                <p class="description">{{ apartment.description }}</p>
+                
+                <div class="key-details">
+                    <div class="detail-item">
+                        <i class="fas fa-bed"></i>
+                        <h3>{{ apartment.bedrooms }}</h3>
+                        <p>Bedrooms</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-bath"></i>
+                        <h3>{{ apartment.bathrooms }}</h3>
+                        <p>Bathrooms</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-ruler-combined"></i>
+                        <h3>{{ apartment.square_feet }}</h3>
+                        <p>Sq Ft</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>{{ apartment.available_date }}</h3>
+                        <p>Available</p>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0; padding: 1rem; background: #e3f2fd; border-radius: 10px;">
+                    <h3><i class="fas fa-info-circle"></i> Important Details</h3>
+                    <p><strong>Security Deposit:</strong> ${{ apartment.deposit }}</p>
+                    <p><strong>Lease End Date:</strong> {{ apartment.lease_end }}</p>
+                    <p><strong>Utilities:</strong> {{ apartment.utilities }}</p>
+                </div>
+            </section>
+
+            <!-- Photo Gallery -->
+            <section class="photo-gallery" id="photos">
+                <h2><i class="fas fa-images"></i> Photo Gallery</h2>
+                <div class="gallery-grid">
+                    {% for photo in apartment.photos %}
+                    <div class="gallery-item">
+                        <img src="{{ photo }}" alt="Apartment photo">
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Amenities -->
+            <section class="amenities-section" id="amenities">
+                <h2><i class="fas fa-star"></i> Amenities & Features</h2>
+                <div class="amenities-grid">
+                    {% for amenity in apartment.amenities %}
+                    <div class="amenity-item">
+                        <i class="fas fa-check"></i>
+                        <span>{{ amenity }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section" id="contact">
+                <h2><i class="fas fa-phone"></i> Get in Touch</h2>
+                <p>Interested in this apartment? Send us a message!</p>
+                <div class="contact-buttons">
+                    <a href="/contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Send Message
+                    </a>
+                </div>
+                <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                    <h3>Contact Information</h3>
+                    <p><strong>{{ apartment.contact_name }}</strong></p>
+                    <p><i class="fas fa-envelope"></i> {{ apartment.contact_email }}</p>
+                    <p><i class="fas fa-phone"></i> {{ apartment.contact_phone }}</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.borderBottomColor = 'transparent';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.borderBottomColor = '#667eea';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
