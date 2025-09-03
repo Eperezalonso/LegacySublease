@@ -24,8 +24,13 @@ If you want different photo names or more photos, edit the `photos` list in `mai
 
 ```python
 'photos': [
-    '/static/images/your-photo-name.jpg',
-    '/static/images/another-photo.jpg',
+    '/static/images/pool.png',
+    '/static/images/kitchen.png',
+    '/static/images/living_room.png',
+    '/static/images/room.png',
+    '/static/images/outside.png'
+    '/static/images/room2.png'
+
     # Add more photos as needed
 ]
 ```

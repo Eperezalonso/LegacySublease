@@ -31,11 +31,12 @@ apartment_data = {
     'contact_phone': '(305) 546-9205',
     'photos': [
         # Local photos - place your apartment photos in the static/images folder
-        '/static/images/photo1.jpg',
-        '/static/images/photo2.jpg',
-        '/static/images/photo3.jpg',
-        '/static/images/photo4.jpg',
-        '/static/images/photo5.jpg'
+        '/static/images/pool.png',
+        '/static/images/kitchen.png',
+        '/static/images/living_room.png',
+        '/static/images/room.png',
+        '/static/images/outside.png',
+        '/static/images/room2.png'
     ]
 }
 
