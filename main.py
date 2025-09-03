@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = 'your-secret-key-here'  # Change this in production
 
 # Sample apartment data - customize this with your actual apartment details
@@ -30,10 +30,12 @@ apartment_data = {
     'contact_email': 'perezalonsoenrique@gmail.com',
     'contact_phone': '(305) 546-9205',
     'photos': [
-        #add actual photos here
-        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1560448075-bb485b067938?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1560448204-60394e4be125?w=800&h=600&fit=crop'
+        # Local photos - place your apartment photos in the static/images folder
+        '/static/images/photo1.jpg',
+        '/static/images/photo2.jpg',
+        '/static/images/photo3.jpg',
+        '/static/images/photo4.jpg',
+        '/static/images/photo5.jpg'
     ]
 }
 

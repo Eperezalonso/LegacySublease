@@ -57,3 +57,12 @@ Thumbs.db
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Photos (keep folder structure but ignore actual image files)
+static/images/*.jpg
+static/images/*.jpeg
+static/images/*.png
+static/images/*.gif
+static/images/*.webp
+static/images/*.bmp
+static/images/*.tiff
