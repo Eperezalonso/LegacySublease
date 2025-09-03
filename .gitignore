@@ -59,10 +59,11 @@ Thumbs.db
 .env.production.local
 
 # Photos (keep folder structure but ignore actual image files)
-static/images/*.jpg
-static/images/*.jpeg
-static/images/*.png
-static/images/*.gif
-static/images/*.webp
-static/images/*.bmp
-static/images/*.tiff
+# Commented out to allow photos for deployment
+# static/images/*.jpg
+# static/images/*.jpeg
+# static/images/*.png
+# static/images/*.gif
+# static/images/*.webp
+# static/images/*.bmp
+# static/images/*.tiff
